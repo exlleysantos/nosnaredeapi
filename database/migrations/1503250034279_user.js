@@ -7,14 +7,16 @@ class UserSchema extends Schema {
   up () {
     this.create('users', (table) => {
       table.increments();
+      table.string('fullname').notNullable();
       table.string('username').notNullable();
       table.string('email').notNullable();
       table.string('password').notNullable();
+      table.string('institution').notNullable();
       table.string('cpf').notNullable();
       table.string('avatar');
       table.string('lattes');
       table.string('orcid');
-      table.enu('type', ['adm', 'teacher']).notNullable().defaultTo('teacher');
+      table.enu('level', ['elementary_1', 'elementary_2', 'high', 'university']).notNullable().defaultTo('teacher');
       table.timestamps();
     })
   }

@@ -34,6 +34,55 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
+  /**
+  * @method profileImage
+  *
+  * @return {Object}
+  */
+  profileImage (){
+    return this.hasOne('App/Models/Image');
+  }
+
+  /**
+  * @method interests
+  *
+  * @return {Object}
+  */
+  interests (){
+    return this.hasMany('App/Models/Interest');
+  }
+
+  /**
+   * @method forums
+   * 
+   * @return {Object}
+   */
+
+  forums (){
+    return this.hasMany('App/Models/Forum');
+  }
+
+  /**
+   * @method materials
+   * 
+   * @return {Object}
+   */
+
+  materials (){
+    return this.hasMany('App/Models/Material');
+  }
+
+  /**
+   * @method tdics
+   * 
+   * @return {Object}
+   */
+
+  tdics (){
+    return this.hasMany('App/Models/Tdic');
+  }
+
+
 }
 
 module.exports = User
