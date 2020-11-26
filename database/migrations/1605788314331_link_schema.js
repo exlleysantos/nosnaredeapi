@@ -6,10 +6,10 @@ const Schema = use('Schema')
 class LinkSchema extends Schema {
   up () {
     this.create('links', (table) => {
-      table.increments();
-      table.string('link_description');
-      table.string('link');
-      table.timestamps();
+      table.increments()
+      table.string('link_description')
+      table.string('link')
+      table.timestamps()
     })
   }
 

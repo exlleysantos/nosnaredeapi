@@ -6,9 +6,9 @@ const Schema = use('Schema')
 class ArchiveSchema extends Schema {
   up () {
     this.create('archives', (table) => {
-      table.increments();
-      table.string('path').notNullable();
-      table.timestamps();
+      table.increments()
+      table.string('path').notNullable()
+      table.timestamps()
     })
   }
 
@@ -18,3 +18,4 @@ class ArchiveSchema extends Schema {
 }
 
 module.exports = ArchiveSchema
+

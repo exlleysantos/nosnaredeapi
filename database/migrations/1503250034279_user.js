@@ -16,7 +16,7 @@ class UserSchema extends Schema {
       table.string('avatar');
       table.string('lattes');
       table.string('orcid');
-      table.enu('level', ['elementary_1', 'elementary_2', 'high', 'university']).notNullable().defaultTo('teacher');
+      table.enu('level', ['elementary_1', 'elementary_2', 'high', 'university']).notNullable();
       table.timestamps();
     })
   }

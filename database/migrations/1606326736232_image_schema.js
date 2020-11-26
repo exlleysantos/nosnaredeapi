@@ -3,26 +3,26 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class InterestSchema extends Schema {
+class ImageSchema extends Schema {
   up () {
-    this.create('interests', (table) => {
+    this.create('images', (table) => {
       table.increments()
-      
+
       table.integer('user_id')
       .unsigned()
       .references('id')
       .inTable('users')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
-
-      table.string('interest').notNullable()
+      
+      table.string('path').notNullable()
       table.timestamps()
     })
   }
 
   down () {
-    this.drop('interests')
+    this.drop('images')
   }
 }
 
-module.exports = InterestSchema
+module.exports = ImageSchema

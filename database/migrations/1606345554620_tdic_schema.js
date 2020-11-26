@@ -3,11 +3,10 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class ForumSchema extends Schema {
+class TdicSchema extends Schema {
   up () {
-    this.create('forums', (table) => {
+    this.create('tdics', (table) => {
       table.increments()
-      
       table.integer('user_id')
       .unsigned()
       .references('id')
@@ -17,15 +16,17 @@ class ForumSchema extends Schema {
 
       table.string('title').notNullable()
       table.string('description').notNullable()
+      table.string('link').notNullable()
       
-      table.enu('type', ['doubts', 'experience', 'curiosity', 'general']).notNullable().defaultTo('general')
+      table.enu('destination', ['elementary_1', 'elementary_2', 'high', 'university']).notNullable()
+      table.enu('type', ['class', 'online_course', 'document', 'lecture']).notNullable()
       table.timestamps()
     })
   }
 
   down () {
-    this.drop('forums')
+    this.drop('tdics')
   }
 }
 
-module.exports = ForumSchema
+module.exports = TdicSchema
