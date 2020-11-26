@@ -5,12 +5,12 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
- * Resourceful controller for interacting with shareds
+ * Resourceful controller for interacting with materials
  */
-class SharedController {
+class MaterialController {
   /**
-   * Show a list of all shareds.
-   * GET shareds
+   * Show a list of all materials.
+   * GET materials
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -21,8 +21,8 @@ class SharedController {
   }
 
   /**
-   * Render a form to be used for creating a new shared.
-   * GET shareds/create
+   * Render a form to be used for creating a new material.
+   * GET materials/create
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -33,8 +33,8 @@ class SharedController {
   }
 
   /**
-   * Create/save a new shared.
-   * POST shareds
+   * Create/save a new material.
+   * POST materials
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -44,8 +44,8 @@ class SharedController {
   }
 
   /**
-   * Display a single shared.
-   * GET shareds/:id
+   * Display a single material.
+   * GET materials/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -56,8 +56,8 @@ class SharedController {
   }
 
   /**
-   * Render a form to update an existing shared.
-   * GET shareds/:id/edit
+   * Render a form to update an existing material.
+   * GET materials/:id/edit
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -68,8 +68,8 @@ class SharedController {
   }
 
   /**
-   * Update shared details.
-   * PUT or PATCH shareds/:id
+   * Update material details.
+   * PUT or PATCH materials/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -79,8 +79,8 @@ class SharedController {
   }
 
   /**
-   * Delete a shared with id.
-   * DELETE shareds/:id
+   * Delete a material with id.
+   * DELETE materials/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -90,4 +90,4 @@ class SharedController {
   }
 }
 
-module.exports = SharedController
+module.exports = MaterialController

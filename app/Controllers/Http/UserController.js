@@ -15,8 +15,9 @@ class UserController {
     }
 
     async show ({ params }) {
-    
-        return await User.findOrFail(params.id);
+        const user = User.findOrFail(params.id);
+        await user.load('progilePicture')
+        return user 
     }
 
     async destroy ({ params, auth, response }) {

@@ -5,12 +5,12 @@
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
- * Resourceful controller for interacting with formations
+ * Resourceful controller for interacting with courses
  */
-class FormationController {
+class CourseController {
   /**
-   * Show a list of all formations.
-   * GET formations
+   * Show a list of all courses.
+   * GET courses
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -21,8 +21,8 @@ class FormationController {
   }
 
   /**
-   * Render a form to be used for creating a new formation.
-   * GET formations/create
+   * Render a form to be used for creating a new course.
+   * GET courses/create
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -33,8 +33,8 @@ class FormationController {
   }
 
   /**
-   * Create/save a new formation.
-   * POST formations
+   * Create/save a new course.
+   * POST courses
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -44,8 +44,8 @@ class FormationController {
   }
 
   /**
-   * Display a single formation.
-   * GET formations/:id
+   * Display a single course.
+   * GET courses/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -56,8 +56,8 @@ class FormationController {
   }
 
   /**
-   * Render a form to update an existing formation.
-   * GET formations/:id/edit
+   * Render a form to update an existing course.
+   * GET courses/:id/edit
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -68,8 +68,8 @@ class FormationController {
   }
 
   /**
-   * Update formation details.
-   * PUT or PATCH formations/:id
+   * Update course details.
+   * PUT or PATCH courses/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -79,8 +79,8 @@ class FormationController {
   }
 
   /**
-   * Delete a formation with id.
-   * DELETE formations/:id
+   * Delete a course with id.
+   * DELETE courses/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -90,4 +90,4 @@ class FormationController {
   }
 }
 
-module.exports = FormationController
+module.exports = CourseController
