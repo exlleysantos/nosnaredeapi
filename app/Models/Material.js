@@ -3,10 +3,10 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
-class Answer extends Model {
+class Material extends Model {
     archive () {
         return this.hasOne('App/Models/Archive')
     }
 }
 
-module.exports = Answer
+module.exports = Material
