@@ -4,8 +4,12 @@
 const Model = use('Model')
 
 class Answer extends Model {
-    archive () {
-        return this.hasOne('App/Models/Image')
+
+    forum () {
+        return this.belongsTo('App/Models/Forum')
+    }
+    archives () {
+        return this.hasOne('App/Models/AnswerArchive')
     }
 }
 

@@ -14,14 +14,14 @@ class MaterialSchema extends Schema {
       .inTable('users')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
-
+/*
       table.integer('archive_id')
       .unsigned()
       .references('id')
-      .inTable('images')
+      .inTable('material_archives')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
-
+*/
       table.string('title').notNullable()
       table.string('description').notNullable()
       table.string('link').notNullable()
