@@ -23,7 +23,7 @@ Route.group(() => {
   Route.resource("contents", "ContentController").apiOnly();
   Route.resource("forums", "ForumController").apiOnly();*/
 });
-
+Route.post('users/:id/image', 'ImageController.store')
 Route.post('/sessions', 'SessionController.create');
 
 Route.get('/', () => {
