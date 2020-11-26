@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class Answer extends Model {
     archive () {
-        return this.hasOne('App/Models/Archive')
+        return this.hasOne('App/Models/Image')
     }
 }
 

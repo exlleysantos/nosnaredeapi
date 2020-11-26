@@ -26,7 +26,7 @@ class AnswersSchema extends Schema {
       table.integer('archive_id')
       .unsigned()
       .references('id')
-      .inTable('archives')
+      .inTable('images')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
 

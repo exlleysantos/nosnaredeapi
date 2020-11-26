@@ -18,14 +18,14 @@ class MaterialSchema extends Schema {
       table.integer('archive_id')
       .unsigned()
       .references('id')
-      .inTable('archives')
+      .inTable('images')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
 
       table.string('title').notNullable()
       table.string('description').notNullable()
       table.string('link').notNullable()
-      
+
       table.enu('destination', ['elementary_1', 'elementary_2', 'high', 'university']).notNullable()
       table.enu('type', ['document', 'audio', 'video', 'other']).notNullable()
       table.timestamps()

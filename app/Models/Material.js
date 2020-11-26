@@ -5,7 +5,7 @@ const Model = use('Model')
 
 class Material extends Model {
     archive () {
-        return this.hasOne('App/Models/Archive')
+        return this.hasOne('App/Models/Image')
     }
 }
 
