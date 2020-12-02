@@ -24,7 +24,8 @@ Route.group(() => {
   Route.resource("forums", "ForumController").apiOnly();*/
 });
 Route.post('users/:id/image', 'ImageController.store')
-Route.post('/sessions', 'SessionController.create');
+Route.post('/sessions', 'SessionController.store');
+Route.get('/sessions', 'SessionController.show');
 
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }

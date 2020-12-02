@@ -11,7 +11,7 @@ class UserSchema extends Schema {
       table.string('username').notNullable();
       table.string('email').notNullable();
       table.string('password').notNullable();
-      table.string('institution').notNullable();
+      table.string('institution');
       table.string('cpf').notNullable();
       table.string('avatar');
       table.string('lattes');
