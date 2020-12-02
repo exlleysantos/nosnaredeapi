@@ -2,7 +2,7 @@
 
 class SessionController {
 
-    async store ({ request, auth }) { 
+    async store ({ request, auth, response }) { 
 
 
         try {
@@ -13,7 +13,10 @@ class SessionController {
           return token
         }
         catch (error) {
-          return error;
+          
+          return response.status(error.code || 500).json({
+            message: error.message 
+          });
         }
     }
 
