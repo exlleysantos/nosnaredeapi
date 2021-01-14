@@ -1,6 +1,7 @@
 'use strict'
 
 const Helpers = use('Helpers')
+const Image = use('App/Models/Image')
 const User = use('App/Models/User')
 
 /**
@@ -16,7 +17,8 @@ class ImageController {
 
     const profilePic = request.file('image', {
       types: ['image'],
-      size: '2mb'
+      size: '2mb',
+      extnames: ['png', 'jpeg']
     })
 
     await profilePic.move(Helpers.tmpPath('uploads'), {
@@ -26,6 +28,8 @@ class ImageController {
       if (!profilePic.moved()) {
         return profilePic.errors()
       }
+
+      user.profileImage().create({ path: profilePic.fileName })
     
     return 'uplad succesfull'
   }

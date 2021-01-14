@@ -1,5 +1,7 @@
 'use strict'
 
+const User = use('App/Models/User')
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -41,6 +43,24 @@ class AnswerArchiveController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
+    const answer = await Answer.findOrFail(params.id)
+
+    const archive = request.file('archive', {
+      types: ['file'],
+      size: '5mb'
+    })
+
+    await archive.move(Helpers.tmpPath('archiveUploads'), {
+        name: `${Date.now()}-${params.id}`
+      })
+    
+      if (!archive.moved()) {
+        return archive.errors()
+      }
+
+      answer.answer().create({ path: archive.fileName })
+    
+    return 'upload succesfull'
   }
 
   /**
