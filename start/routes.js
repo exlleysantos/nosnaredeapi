@@ -1,5 +1,7 @@
 'use strict'
 
+const AnswerController = require('../app/Controllers/Http/AnswerController');
+
 /*
 |--------------------------------------------------------------------------
 | Routes
@@ -16,16 +18,27 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.group(() => {
-  Route.resource("users", "UserController").apiOnly();
-  /*Route.resource("teachers", "TeacherController").apiOnly();
-  Route.resource("tags", "TagController").apiOnly();
-  Route.resource("contents", "ContentController").apiOnly();
-  Route.resource("forums", "ForumController").apiOnly();*/
-});
-Route.post('users/:id/image', 'ImageController.store')
+Route.post('/users/:id/picture', 'ImageController.store')
 Route.post('/sessions', 'SessionController.store');
 Route.get('/sessions', 'SessionController.show');
+
+Route.post('/users', 'UserController.store');
+Route.get('/users', 'UserController.index');
+Route.get('/users/:id', 'UserController.show');
+Route.put('/users/:id', 'UserController.update');
+Route.delete('/users/:id', 'UserController.destroy');
+
+Route.resource('/answers', 'AnswerController').apiOnly();
+Route.post('/answers/:id/archive', 'AnswerArchiveController.store');
+Route.resource('/courses', 'CourseController').apiOnly();
+Route.resource('/forums', 'ForumController').apiOnly();
+Route.resource('/interests', 'InterestController').apiOnly();
+Route.resource('/links', 'LinkController').apiOnly();
+Route.resource('/materials', 'MaterialController').apiOnly();
+Route.resource('/messages', 'MessageController').apiOnly();
+Route.resource('/tdics', 'TdicController').apiOnly();
+
+
 
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
