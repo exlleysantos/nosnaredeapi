@@ -20,14 +20,7 @@ class AnswersSchema extends Schema {
       .inTable('forums')
       .onUpdate('CASCADE')
       .onDelete('CASCADE')
-/*
-      table.integer('archive_id')
-      .unsigned()
-      .references('id')
-      .inTable('answer_archives')
-      .onUpdate('CASCADE')
-      .onDelete('CASCADE')
-*/ 
+
       table.string('comment', 500).notNullable()
       table.timestamps();
     })
