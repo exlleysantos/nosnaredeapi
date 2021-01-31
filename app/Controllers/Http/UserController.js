@@ -23,13 +23,13 @@ class UserController {
 
     async index (){
         const users = User.query().with('profileImage').fetch();
-        return users
+        return users;
     }
 
     async show ({ params }) {
         const user = User.query(params.id).with('profileImage').fetch();
         //await user.loadOne('profileImage')
-        return user
+        return user;
     }
 
     async destroy ({ params, auth, response }) {

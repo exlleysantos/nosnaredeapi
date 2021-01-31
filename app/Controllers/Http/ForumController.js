@@ -1,5 +1,7 @@
 'use strict'
 
+const Forum = use("App/Models/Forum");
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -18,18 +20,8 @@ class ForumController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-  }
-
-  /**
-   * Render a form to be used for creating a new forum.
-   * GET forums/create
-   *
-   * @param {object} ctx
-   * @param {Request} ctx.request
-   * @param {Response} ctx.response
-   * @param {View} ctx.view
-   */
-  async create ({ request, response, view }) {
+      const forums = Forum.query().with('answers').fetch();
+      return forums;
   }
 
   /**
@@ -40,7 +32,12 @@ class ForumController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request, auth }) {
+    const data = request.only(["title", "description"]);
+    const forum = await Forum.create({ user_id: auth.user.id, ...data });
+
+    return forum;
+
   }
 
   /**
@@ -52,7 +49,11 @@ class ForumController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show ({ params }) {
+    console.log(params.id);
+    const forum = Forum.query().with('answers').where('id', params.id).fetch();
+    //await user.loadOne('profileImage')
+    return forum;
   }
 
   /**

@@ -1,6 +1,7 @@
 'use strict'
 
-const Answer = use('App/Models/Answer')
+const Answer = use('App/Models/Answer');
+const Forum = use ('App/Models/Forum');
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -31,7 +32,17 @@ class AnswerController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request, auth, params}) {
+    const forum = await Forum.find(params.id);
+    const { id } = auth.user.id;
+    
+    const data = request.only(["comment"]);
+
+    const answer = await Answer.create({...data, user_id : id});
+    forum.answers().create({...data});
+    return answer;
+
+
   }
 
   /**

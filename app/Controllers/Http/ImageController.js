@@ -22,7 +22,7 @@ class ImageController {
     })
 
     await profilePic.move(Helpers.tmpPath('uploads'), {
-        name: `${Date.now()}-${params.id}`
+        name: `${params.id}`
       })
     
       if (!profilePic.moved()) {
@@ -31,7 +31,11 @@ class ImageController {
 
       user.profileImage().create({ path: profilePic.fileName })
     
-    return 'uplad succesfull'
+    return 'upload succesfull'
+  }
+
+  async show ({response, params}) {
+    return response.download(Helpers.tmpPath(`uploads/${params.path}`));
   }
 }
 
