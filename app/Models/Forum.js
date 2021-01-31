@@ -8,6 +8,10 @@ class Forum extends Model {
     user() {
         return this.belongsTo('App/Models/User')
     }
+
+    answers() {
+        return this.hasMany('App/Models/Answer');
+    }
 }
 
 module.exports = Forum
