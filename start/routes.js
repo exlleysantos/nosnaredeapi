@@ -18,7 +18,9 @@ const AnswerController = require('../app/Controllers/Http/AnswerController');
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route');
 
-Route.post('/users/:id/picture', 'ImageController.store')
+Route.post('/users/:id/picture', 'ImageController.store');
+Route.get('/images/:path', 'ImageController.show');
+
 Route.post('/sessions', 'SessionController.store');
 Route.get('/sessions', 'SessionController.show');
 
@@ -30,13 +32,16 @@ Route.delete('/users/:id', 'UserController.destroy');
 
 Route.resource('/answers', 'AnswerController').apiOnly();
 Route.post('/answers/:id/archive', 'AnswerArchiveController.store');
-Route.resource('/courses', 'CourseController').apiOnly();
-Route.resource('/forums', 'ForumController').apiOnly();
+
+Route.post('forums/:id/answers', 'AnswerController.store').middleware(["auth"]);
+
+Route.resource('/courses', 'CourseController').apiOnly().middleware(["auth"]);
+Route.resource('/forums', 'ForumController').apiOnly().middleware(["auth"]);
 Route.resource('/interests', 'InterestController').apiOnly();
-Route.resource('/links', 'LinkController').apiOnly();
-Route.resource('/materials', 'MaterialController').apiOnly();
-Route.resource('/messages', 'MessageController').apiOnly();
-Route.resource('/tdics', 'TdicController').apiOnly();
+Route.resource('/links', 'LinkController').apiOnly().middleware(["auth"]);
+Route.resource('/materials', 'MaterialController').apiOnly().middleware(["auth"]);
+Route.resource('/messages', 'MessageController').apiOnly().middleware(["auth"]);
+Route.resource('/tdics', 'TdicController').apiOnly().middleware(["auth"]);
 
 
 
