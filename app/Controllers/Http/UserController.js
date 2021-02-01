@@ -5,8 +5,8 @@ const Helpers = use('Helpers');
 
 class UserController {
     async store ({ request }) {
-        const data = request.only(["fullname","level", "username", "email", "password", "cpf"]);
-        return await User.create({data});
+        const data = request.only(["fullname","level", "institution", "lattes", "orcid", "username", "email", "password", "cpf"]);
+        return await User.create(data);
     }
 
     async update ({params, request, response}) {
