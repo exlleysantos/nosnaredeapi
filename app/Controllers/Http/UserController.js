@@ -26,8 +26,10 @@ class UserController {
     }
 
     async show ({ params }) {
-        const user = User.query(params.id).with('profileImage').fetch();
-        //await user.loadOne('profileImage')
+        
+        //const user = await User.findOrFail(params.id);
+        const user = await User.find(params.id);
+        await user.load('profileImage')
         return user;
     }
 
