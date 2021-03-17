@@ -50,10 +50,15 @@ class ForumController {
    * @param {View} ctx.view
    */
   async show ({ params }) {
+    const forum = await Forum.find(params.id);
+    const answers = await forum.load('answers')
+    console.log(answers);
+    return forum;
+/*
     console.log(params.id);
     const forum = Forum.query().with('answers').where('id', params.id).fetch();
     //await user.loadOne('profileImage')
-    return forum;
+    return forum;*/
   }
 
   /**

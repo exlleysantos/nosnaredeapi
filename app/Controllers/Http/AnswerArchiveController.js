@@ -1,6 +1,9 @@
 'use strict'
+const Helpers = use('Helpers')
+const User = use('App/Models/Forum')
+const Answer = use('App/Models/Answer')
 
-const User = use('App/Models/User')
+const crypto = require('crypto');
 
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
@@ -42,23 +45,24 @@ class AnswerArchiveController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async store ({ request, response }) {
+  async store ({ request, params }) {
     const answer = await Answer.findOrFail(params.id)
 
     const archive = request.file('archive', {
-      types: ['file'],
+      types: ['pdf', 'docx', 'doc', 'png', 'jpeg', 'pptx','xlsx', 'odf'],
       size: '5mb'
     })
 
-    await archive.move(Helpers.tmpPath('archiveUploads'), {
-        name: `${Date.now()}-${params.id}`
+    await archive.move(Helpers.tmpPath('uploads'), {
+        name: `${crypto.randomBytes(10).toString('HEX')}`
       })
     
       if (!archive.moved()) {
-        return archive.errors()
+        console.log("erro")
+        return archive.error()
       }
 
-      answer.answer().create({ path: archive.fileName })
+      answer.archives().create({ path: archive.fileName })
     
     return 'upload succesfull'
   }
@@ -72,7 +76,8 @@ class AnswerArchiveController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
+  async show ({ params, response }) {
+    return response.download(Helpers.tmpPath(`uploads/${params.path}`));
   }
 
   /**

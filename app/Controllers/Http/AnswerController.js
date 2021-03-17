@@ -21,7 +21,11 @@ class AnswerController {
    * @param {View} ctx.view
    */
   async index () {
-    return Answer.all();
+    const answers = Answer.query()
+    .with('archives')
+    .fetch()
+
+  return answers;
   }
 
   /**
@@ -34,14 +38,13 @@ class AnswerController {
    */
   async store ({ request, auth, params}) {
     const forum = await Forum.find(params.id);
-    const { id } = auth.user.id;
+    const { id } = auth.user;
     
     const data = request.only(["comment"]);
 
-    const answer = await Answer.create({...data, user_id : id});
-    forum.answers().create({...data});
-    return answer;
-
+    //const answer = await Answer.create({...data, user_id : id});
+    
+    return forum.answers().create({...data, user_id: id});
 
   }
 
@@ -54,8 +57,11 @@ class AnswerController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async show ({ params, request, response, view }) {
-  }
+   async show ({ params }) {      
+    const answer = await Answer.find(params.id);
+    await answer.load('archives')
+    return answer;
+}
 
   /**
    * Update answer details.

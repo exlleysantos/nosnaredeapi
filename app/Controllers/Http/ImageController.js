@@ -22,7 +22,7 @@ class ImageController {
     })
 
     await profilePic.move(Helpers.tmpPath('uploads'), {
-        name: `${params.id}`
+        name: `profilePic-${params.id}`
       })
     
       if (!profilePic.moved()) {
