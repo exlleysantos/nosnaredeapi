@@ -31,7 +31,9 @@ Route.put('/users/:id', 'UserController.update');
 Route.delete('/users/:id', 'UserController.destroy');
 
 Route.resource('/answers', 'AnswerController').apiOnly();
+
 Route.post('/answers/:id/archive', 'AnswerArchiveController.store');
+Route.get('/archive/:path', 'AnswerArchiveController.show');
 
 Route.post('forums/:id/answers', 'AnswerController.store').middleware(["auth"]);
 
