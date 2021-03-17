@@ -5,6 +5,9 @@ const Model = use('Model')
 
 class Answer extends Model {
 
+    user(){
+        return this.belongsTo('App/Models/User')
+    }
     forum () {
         return this.belongsTo('App/Models/Forum')
     }
