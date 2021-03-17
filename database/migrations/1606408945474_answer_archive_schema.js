@@ -7,6 +7,14 @@ class AnswerArchiveSchema extends Schema {
   up () {
     this.create('answer_archives', (table) => {
       table.increments()
+      
+      table.integer('answer_id')
+      .references('id')
+      .inTable('answers')
+      .onUpdate('CASCADE')
+      .onDelete('CASCADE')
+      
+      table.string('path').notNullable()
       table.timestamps()
     })
   }

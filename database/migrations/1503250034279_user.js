@@ -13,7 +13,6 @@ class UserSchema extends Schema {
       table.string('password').notNullable();
       table.string('institution');
       table.string('cpf').notNullable();
-      table.string('avatar');
       table.string('lattes');
       table.string('orcid');
       table.enu('level', ['elementary_1', 'elementary_2', 'high', 'university']).notNullable();
