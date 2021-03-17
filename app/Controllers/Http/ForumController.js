@@ -51,8 +51,7 @@ class ForumController {
    */
   async show ({ params }) {
     const forum = await Forum.find(params.id);
-    const answers = await forum.load('answers')
-    console.log(answers);
+    await forum.load('answers')
     return forum;
 /*
     console.log(params.id);
