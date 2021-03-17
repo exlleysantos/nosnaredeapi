@@ -41,7 +41,6 @@ class AnswerController {
     const { id } = auth.user;
     
     const data = request.only(["comment"]);
-  
     return forum.answers().create({...data, user_id: id});
 
   }
