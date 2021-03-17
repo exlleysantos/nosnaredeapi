@@ -53,11 +53,7 @@ class ForumController {
     const forum = await Forum.find(params.id);
     await forum.load('answers')
     return forum;
-/*
-    console.log(params.id);
-    const forum = Forum.query().with('answers').where('id', params.id).fetch();
-    //await user.loadOne('profileImage')
-    return forum;*/
+  
   }
 
   /**
