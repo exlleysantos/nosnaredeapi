@@ -9,6 +9,7 @@ class AnswerArchiveSchema extends Schema {
       table.increments()
       
       table.integer('answer_id')
+      .unsigned()
       .references('id')
       .inTable('answers')
       .onUpdate('CASCADE')

@@ -7,6 +7,7 @@ class AnswersSchema extends Schema {
   up () {
     this.create('answers', (table) => {
       table.increments()
+      
       table.integer('user_id')
       .unsigned()
       .references('id')
